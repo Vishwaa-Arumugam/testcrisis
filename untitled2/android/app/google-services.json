@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1094929861292",
+    "project_id": "crisis-hackfest",
+    "storage_bucket": "crisis-hackfest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094929861292:android:f289e5e0ec48f6179bed09",
+        "android_client_info": {
+          "package_name": "com.example.last_try1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqhhSJN6iVlVJ_Q24Bfx4sIlhiK720VF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094929861292:android:1ae836dcd6f3125a9bed09",
+        "android_client_info": {
+          "package_name": "com.example.untitled2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqhhSJN6iVlVJ_Q24Bfx4sIlhiK720VF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
