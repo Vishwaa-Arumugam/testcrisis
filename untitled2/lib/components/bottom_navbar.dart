@@ -215,6 +215,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
+                  padding: const EdgeInsets.only(left: 15, top: 15),
+                    child: Text(
+                      'Account Details',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Padding(
                   padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
                   child: Center(
                     child: CircleAvatar(
@@ -225,91 +235,126 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 SizedBox(height: 30),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 0, 5),
+                  padding: const EdgeInsets.fromLTRB(12, 0, 0, 5),
                   child: Text(
                     'Name',
                     style: TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.bold,
                       color: Colors.grey,
-                      letterSpacing: 3.0,
+                      letterSpacing: 1.0,
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 0, 15),
-                  child: Text(
-                    '${userData['name']}',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 4.0,
+                  padding: const EdgeInsets.fromLTRB(10, 2, 10, 10),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 0.5,
+                      ),
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: Text(
+                      '${userData['name']}',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: 1.0,
+                      ),
+                      textAlign: TextAlign.left,
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 0, 5),
+                  padding: const EdgeInsets.fromLTRB(12, 0, 0, 5),
                   child: Text(
                     'Email',
                     style: TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.bold,
                       color: Colors.grey,
-                      letterSpacing: 3.0,
+                      letterSpacing: 1.0,
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 0, 15),
-                  child: Text(
-                    '${userData['email']}',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 4.0,
+                  padding: const EdgeInsets.fromLTRB(10, 2, 10, 10),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 0.5,
+                      ),
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: Text(
+                      '${userData['email']}',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: 1.0,
+                      ),
+                      textAlign: TextAlign.left,
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 0, 5),
+                  padding: const EdgeInsets.fromLTRB(12, 0, 0, 5),
                   child: Text(
                     'Mobile Number',
                     style: TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.bold,
                       color: Colors.grey,
-                      letterSpacing: 3.0,
+                      letterSpacing: 1.0,
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 0, 15),
-                  child: Text(
-                    '${userData['pno']}',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 2.0,
+                  padding: const EdgeInsets.fromLTRB(10, 2, 10, 10),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 0.5,
+                      ),
+                      borderRadius: BorderRadius.circular(25),
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(100, 40, 0, 0),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      _editDetails(userData);
-                    },
                     child: Text(
-                      'EDIT DETAILS',
-                      style: TextStyle(fontSize: 18.0),
-                    ),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.black),
-                      foregroundColor: MaterialStateProperty.all(Colors.white),
-                      minimumSize:
-                          MaterialStateProperty.all<Size>(Size(40, 50)),
+                      '${userData['pno']}',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: 1.0,
+                      ),
+                      textAlign: TextAlign.left,
                     ),
                   ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                  child: Center(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        _editDetails(userData);
+                      },
+                      child: Text(
+                        'EDIT DETAILS',
+                        style: TextStyle(fontSize: 18.0),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.yellow[600]),
+                        foregroundColor: MaterialStateProperty.all(Colors.black),
+                        minimumSize:
+                        MaterialStateProperty.all<Size>(Size(40, 50)),
+                      ),
+                    ),
+                  )
                 )
               ],
             ),

@@ -42,16 +42,16 @@ class _VictimBottomNavBarState extends State<VictimBottomNavBar> {
         child: _pages[_currentIndex],
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.only(top: 20.0), // Adjust top padding as needed
+        padding: EdgeInsets.only(top: 0.0), // Adjust top padding as needed
         child: CurvedNavigationBar(
           backgroundColor: Colors.white,
           color: Colors.black,
           buttonBackgroundColor: Colors.black,
-          height: 75,
-          items: <Widget>[
-            Center(child: Icon(Icons.home, size: 30, color: Colors.white)),
-            Center(child: Icon(Icons.notifications, size: 30, color: Colors.white)),
-            Center(child: Icon(Icons.person, size: 30, color: Colors.white)),
+          height: 60,
+          items: const <Widget>[
+            Center(child: Icon(Icons.home, size: 22.5, color: Colors.white)),
+            Center(child: Icon(Icons.notifications, size: 22.5, color: Colors.white)),
+            Center(child: Icon(Icons.person, size: 22.5, color: Colors.white)),
           ],
           onTap: (index) {
             setState(() {

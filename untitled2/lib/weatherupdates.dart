@@ -67,7 +67,7 @@ class _GetweatherUpdatesState extends State<GetweatherUpdates> {
   }
 
   Future<void> fetchWeatherData(String location) async {
-    final url = 'http://192.168.43.72:5000/get_weather_data?location=$location';
+    final url = 'http://192.168.171.72:5000/get_weather_data?location=$location';
     print(url);
     try {
       final response = await http.get(Uri.parse(url));

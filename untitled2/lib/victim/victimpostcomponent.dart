@@ -17,6 +17,7 @@ class VictimContent extends StatefulWidget {
   final String id;
   final String? foodItems;
   final String? quantity;
+  final String? doctorneed;
   final String? medicineName;
 
   VictimContent({
@@ -34,6 +35,7 @@ class VictimContent extends StatefulWidget {
     this.quantity,
     this.medicineName,
     this.foodItems,
+    this.doctorneed,
   });
 
   @override
@@ -124,7 +126,7 @@ class _VictimContentState extends State<VictimContent> {
         child: Container(
           padding: const EdgeInsets.all(16.0),
           decoration: BoxDecoration(
-            color: Colors.grey[100],
+            color: Colors.white,
             borderRadius: BorderRadius.circular(10.0),
           ),
           child: Column(
@@ -199,9 +201,27 @@ class _VictimContentState extends State<VictimContent> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                         child: Text(
                           "Open",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  SizedBox(width: 5,),
+                  if (widget.doctorneed == 'Yes' &&
+                      widget.doctorneed!.isNotEmpty)
+                    Container(
+                      height: 30,
+                      // width: 85,
+                      decoration: BoxDecoration(
+                        color: Colors.red[500],
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                        child: Text(
+                          "Doctor Needed",
                           style: TextStyle(color: Colors.white),
                         ),
                       ),

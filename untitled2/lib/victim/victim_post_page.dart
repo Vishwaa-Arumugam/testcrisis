@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled2/components/post_component.dart';
 // import 'package:untitled2/components/post_component.dart';
 import 'package:untitled2/victim/victimpostcomponent.dart'; // Make sure the import path is correct
 
@@ -31,7 +32,7 @@ class _VictimPostsPageState extends State<VictimPostsPage> {
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: StreamBuilder<QuerySnapshot>(
-          stream: _firestore.collection('posts').snapshots(),
+          stream: _firestore.collection('posts-volunteer').snapshots(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(
@@ -58,11 +59,10 @@ class _VictimPostsPageState extends State<VictimPostsPage> {
               itemCount: posts.length,
               itemBuilder: (context, index) {
                 final post = posts[index];
-                if(post['item'] == 'boat') {
+                if(post['item'] == 'boat'){
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: VictimContent(
-                      // profilePicUrl: '/home/vishwaa-arumugam/Documents/GitHub/Crisis/crisis_client/lib/images/profile.jpg',
+                    child: Content(
                       name: post['name'],
                       location: post['area'],
                       content: post['postcontent'],
@@ -70,8 +70,86 @@ class _VictimPostsPageState extends State<VictimPostsPage> {
                       mobilenumber: post['phonenumber'],
                       headcount: post['headcount'],
                       item: post['item'],
-                      id: post['uid'],
                       role: post['role'],
+                      id: post['uid'],
+                      // imageUrl: ,
+                    ),
+                  );
+                } else if (post['item'] == 'food') {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Content(
+                      name: post['name'],
+                      location: post['area'],
+                      content: post['postcontent'],
+                      priorityLevel: post['prioritylevel'],
+                      mobilenumber: post['phonenumber'],
+                      headcount: post['headcount'],
+                      item: post['item'],
+                      role: post['role'],
+                      id: post['uid'],
+                      // imageUrl: ,
+                    ),
+                  );
+                }  else if (post['item'] == 'can') {
+                  print(post);
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Content(
+                      name: post['name'],
+                      location: post['area'],
+                      content: post['postcontent'],
+                      mobilenumber: post['phonenumber'],
+                      item: post['item'],
+                      role: post['role'],
+                      id: post['uid'],
+                      // imageUrl: ,
+                    ),
+                  );
+                } else if (post['item'] == 'charge') {
+                  print(post);
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Content(
+                      name: post['name'],
+                      location: post['area'],
+                      landmark: post['landmark'],
+                      content: post['postcontent'],
+                      mobilenumber: post['phonenumber'],
+                      item: post['item'],
+                      role: post['role'],
+                      id: post['uid'],
+                      // imageUrl: ,
+                    ),
+                  );
+                } else if (post['item'] == 'medical'){
+                  print(post);
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Content(
+                      name: post['name'],
+                      location: post['area'],
+                      medicalsupplies : post['medicalSupplies'],
+                      content: post['postcontent'],
+                      mobilenumber: post['phonenumber'],
+                      item: post['item'],
+                      role: post['role'],
+                      id: post['uid'],
+                      // imageUrl: ,
+                    ),
+                  );
+                } else if (post['item'] == 'awareness'){
+                  print(post);
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Content(
+                      name: post['name'],
+                      location: post['area'],
+                      content: post['postcontent'],
+                      item: post['item'],
+                      role: post['role'],
+                      id: post['uid'],
+                      imageUrl: post['mediaUrl'],
                     ),
                   );
                 }

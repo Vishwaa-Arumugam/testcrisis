@@ -32,6 +32,7 @@ class _MedicineAskingPageState extends State<MedicineAskingPage> {
   var _prioritylevel;
   var _medicinename;
   var _quantity;
+  var _doctorNeed;
   var _additionalnotes;
   var meds = 'meds';
   var _role = 'victim';
@@ -85,6 +86,7 @@ class _MedicineAskingPageState extends State<MedicineAskingPage> {
         _area.isNotEmpty &&
         _phonenumber.isNotEmpty &&
         _prioritylevel.isNotEmpty &&
+        _doctorNeed.isNotEmpty &&
         _medicinename.isNotEmpty &&
         _quantity.isNotEmpty &&
         _role.isNotEmpty) {
@@ -95,6 +97,7 @@ class _MedicineAskingPageState extends State<MedicineAskingPage> {
         'phonenumber': _phonenumber,
         'prioritylevel': _prioritylevel,
         'medicinename': _medicinename,
+        'doctorNeed': _doctorNeed,
         'quantity': _quantity,
         'additionalnotes': _additionalnotes,
         'item': meds,
@@ -117,6 +120,9 @@ class _MedicineAskingPageState extends State<MedicineAskingPage> {
       _medicinenamecontroller.clear();
       _quantitycontroller.clear();
       _additionalnotescontroller.clear();
+      setState(() {
+        _doctorNeed = null;
+      });
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Please fill in all required fields')),
@@ -240,6 +246,39 @@ class _MedicineAskingPageState extends State<MedicineAskingPage> {
                       labelText: 'Quantity needed',
                       prefixIcon: Icon(Icons.confirmation_num),
                       border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 5),
+                Text(
+                  'Do You Need a Doctor',
+                  style: TextStyle(fontSize: 18),
+                ),
+                SizedBox(height: 5),
+                ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: 450),
+                  child: DropdownButtonFormField<String>(
+                    value: _doctorNeed,
+                    items: [
+                      DropdownMenuItem(
+                        value: 'Yes',
+                        child: Text('Yes'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'No',
+                        child: Text('No'),
+                      ),
+                    ],
+                    onChanged: (value) {
+                      setState(() {
+                        _doctorNeed = value!;
+                      });
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Yes/No',
+                      prefixIcon: Icon(Icons.medical_information),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(40)),
                     ),
                   ),
                 ),

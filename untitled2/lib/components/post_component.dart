@@ -7,29 +7,31 @@ class Content extends StatefulWidget {
   final String? profilePicUrl;
   final String name;
   final String? priorityLevel;
-  final String mobilenumber;
+  final String? mobilenumber;
   final String item;
   final String? headcount;
-  final String location;
+  final String? location;
   final String content;
   final String? imageUrl;
   final String? role;
   final String? landmark;
   final String id;
+  final String? medicalsupplies;
 
   Content({
     this.profilePicUrl,
     required this.name,
     this.priorityLevel,
-    required this.mobilenumber,
+    this.mobilenumber,
     required this.item,
     this.headcount,
-    required this.location,
+    this.location,
     required this.content,
     this.imageUrl,
     this.landmark,
     this.role,
     required this.id,
+    this.medicalsupplies,
   });
 
   @override
@@ -119,7 +121,7 @@ class _ContentState extends State<Content> {
         child: Container(
           padding: const EdgeInsets.all(16.0),
           decoration: BoxDecoration(
-            color: Colors.grey[100],
+            color: Colors.white,
             borderRadius: BorderRadius.circular(5.0),
           ),
           child: Column(
@@ -146,7 +148,7 @@ class _ContentState extends State<Content> {
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        widget.location,
+                        widget.location!,
                         style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                       ),
                     ],
@@ -203,17 +205,20 @@ class _ContentState extends State<Content> {
                   SizedBox(width: 5),
                   Container(
                     height: 30,
-                    width: 60,
+                    // width: 60,
                     decoration: BoxDecoration(
                       color: Colors.green[500],
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    child: Center(
-                      child: Text(
+                    child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                        child: Center(
+                        child: Text(
                         widget.item,
-                        style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
-                    ),
+                    )
                   ),
                   SizedBox(width: 5),
                 ],
@@ -222,14 +227,16 @@ class _ContentState extends State<Content> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Mobile Number : ' + widget.mobilenumber,
-                    maxLines: isExpanded ? null : 4,
-                    overflow: isExpanded
-                        ? TextOverflow.visible
-                        : TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 18, color: Colors.black),
-                  ),
+                  if(widget.mobilenumber != null) ...[
+                    Text(
+                      'Mobile Number : ' + widget.mobilenumber!,
+                      maxLines: isExpanded ? null : 4,
+                      overflow: isExpanded
+                          ? TextOverflow.visible
+                          : TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: 18, color: Colors.black),
+                    ),
+                  ],
                   SizedBox(height: 10,),
                   if (widget.landmark != null) ...[
                     Text(
@@ -262,7 +269,31 @@ class _ContentState extends State<Content> {
                       style: TextStyle(fontSize: 18, color: Colors.black),
                     ),
                   ],
-                  SizedBox(height: 10,),
+                  if(widget.medicalsupplies != null) ...[
+                    Text(
+                      'Medical Suppies have : "${widget.medicalsupplies}"',
+                      maxLines: isExpanded ? null : 4,
+                      overflow: isExpanded
+                          ? TextOverflow.visible
+                          : TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: 18, color: Colors.black),
+                    ),
+                  ],
+                  if(widget.imageUrl != null) ...[
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.network(
+                        widget.imageUrl!,
+                        loadingBuilder: (context, child, progress) {
+                          return progress == null ? child : CircularProgressIndicator();
+                        },
+                        errorBuilder: (context, error, stackTrace) {
+                          return Text('Error loading image');
+                        },
+                      ),
+                    ),
+                  ],
+                  SizedBox(height: 20,),
                   Text(
                     widget.content,
                     maxLines: isExpanded ? null : 4,
@@ -285,17 +316,17 @@ class _ContentState extends State<Content> {
                 ],
               ),
               SizedBox(height: 20),
-              if (widget.imageUrl != null && widget.imageUrl!.isNotEmpty)
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(15.0),
-                  child: Image.network(
-                    widget.imageUrl!,
-                    height: 200.0,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              SizedBox(height: 5),
+              // if (widget.imageUrl != null && widget.imageUrl!.isNotEmpty)
+              //   ClipRRect(
+              //     borderRadius: BorderRadius.circular(15.0),
+              //     child: Image.network(
+              //       widget.imageUrl!,
+              //       height: 200.0,
+              //       width: double.infinity,
+              //       fit: BoxFit.cover,
+              //     ),
+              //   ),
+              // SizedBox(height: 5),
               Row(
                 children: [
                   Padding(padding: EdgeInsets.only(left: 8.0)),

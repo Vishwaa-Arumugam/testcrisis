@@ -77,6 +77,7 @@ flutter:
      - assets/images/medicine.png
      - assets/images/watercan.png
      - assets/images/charge.png
+     - assets/images/caution.png
      - assets/images/boat.png
      - assets/images/weather.png
      - assets/images/map.png

@@ -7,6 +7,8 @@ import 'package:untitled2/pages/Charging.dart';
 import 'package:untitled2/pages/Food.dart';
 import 'package:untitled2/pages/Medical.dart';
 import 'package:untitled2/pages/CanAvailability.dart';
+import 'package:untitled2/weatherupdates.dart';
+import 'package:untitled2/pages/awareness_post.dart';
 
 class Requests extends StatelessWidget {
   const Requests({Key? key}) : super(key: key);
@@ -101,6 +103,16 @@ class _RequestsPageState extends State<RequestsPage> {
                       );
                     },
                   ),
+                  Tags(
+                    text: 'Awareness Post',
+                    imagePath: 'assets/images/caution.png',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PostContentPage()),
+                      );
+                    },
+                  ),
                 ],
               ),
               SizedBox(height: 20),
@@ -115,7 +127,11 @@ class _RequestsPageState extends State<RequestsPage> {
                   Tags(
                     text: 'Weather Updates',
                     imagePath: 'assets/images/weather.png',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => WeatherUpdates()),
+                      );
+                    },
                   ),
                   Tags(
                     text: 'Offline Maps',

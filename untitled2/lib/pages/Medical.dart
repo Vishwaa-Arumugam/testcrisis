@@ -27,16 +27,13 @@ class _MedicalAssistanceState extends State<MedicalAssistance> {
   String? userId;
   var _name;
   var _address;
-  var _count;
   var _phonenumber;
   var _postcontent;
-  var _doctorNeed;
   var _medicalSupplies;
   var _item = "medical";
 
   final _namecontroller = TextEditingController();
   final _addresscontroller = TextEditingController();
-  final _countcontroller = TextEditingController();
   final _phonenumbercontroller = TextEditingController();
   final _postcontentcontroller = TextEditingController();
   final _medicalSuppliesController = TextEditingController();
@@ -46,7 +43,6 @@ class _MedicalAssistanceState extends State<MedicalAssistance> {
     super.initState();
     _namecontroller.addListener(_updateText);
     _addresscontroller.addListener(_updateText);
-    _countcontroller.addListener(_updateText);
     _phonenumbercontroller.addListener(_updateText);
     _postcontentcontroller.addListener(_updateText);
     _medicalSuppliesController.addListener(_updateText);
@@ -69,7 +65,6 @@ class _MedicalAssistanceState extends State<MedicalAssistance> {
     setState(() {
       _name = _namecontroller.text;
       _address = _addresscontroller.text;
-      _count = _countcontroller.text;
       _phonenumber = _phonenumbercontroller.text;
       _postcontent = _postcontentcontroller.text;
       _medicalSupplies = _medicalSuppliesController.text;
@@ -100,18 +95,15 @@ class _MedicalAssistanceState extends State<MedicalAssistance> {
   void _submitData() async {
     if (_name.isNotEmpty &&
         _address.isNotEmpty &&
-        _count.isNotEmpty &&
         _phonenumber.isNotEmpty &&
         _postcontent.isNotEmpty &&
         _item.isNotEmpty &&
-        _doctorNeed.isNotEmpty &&
         _medicalSupplies.isNotEmpty) {
       Map<String, dynamic> newPost = {
         'name': _name,
         'area': _address,
         'phonenumber': _phonenumber,
         'postcontent': _postcontent,
-        'doctorNeed': _doctorNeed,
         'medicalSupplies': _medicalSupplies,
         'role' : 'volunteer',
         'item': _item,
@@ -125,13 +117,9 @@ class _MedicalAssistanceState extends State<MedicalAssistance> {
       );
       _namecontroller.clear();
       _addresscontroller.clear();
-      _countcontroller.clear();
       _phonenumbercontroller.clear();
       _postcontentcontroller.clear();
       _medicalSuppliesController.clear();
-      setState(() {
-        _doctorNeed = null;
-      });
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Please fill in all fields')),
@@ -221,45 +209,12 @@ class _MedicalAssistanceState extends State<MedicalAssistance> {
                     child: TextFormField(
                       controller: _postcontentcontroller,
                       decoration: InputDecoration(
-                        labelText: 'Details of Medical Condition',
+                        labelText: 'Details of what you can assist with',
                         prefixIcon: Icon(Icons.priority_high),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(40)),
                       ),
                       maxLines: null, // Allows the text field to grow with input
-                    ),
-                  ),
-                ),
-                SizedBox(height: 5),
-                Text(
-                  'Do You Need a Doctor',
-                  style: TextStyle(fontSize: 18),
-                ),
-                SizedBox(height: 5),
-                ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: 450),
-                  child: DropdownButtonFormField<String>(
-                    value: _doctorNeed,
-                    items: [
-                      DropdownMenuItem(
-                        value: 'Yes',
-                        child: Text('Yes'),
-                      ),
-                      DropdownMenuItem(
-                        value: 'No',
-                        child: Text('No'),
-                      ),
-                    ],
-                    onChanged: (value) {
-                      setState(() {
-                        _doctorNeed = value!;
-                      });
-                    },
-                    decoration: InputDecoration(
-                      labelText: 'Yes/No',
-                      prefixIcon: Icon(Icons.medical_information),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(40)),
                     ),
                   ),
                 ),
@@ -276,7 +231,7 @@ class _MedicalAssistanceState extends State<MedicalAssistance> {
                     child: TextFormField(
                       controller: _medicalSuppliesController,
                       decoration: InputDecoration(
-                        labelText: 'Provide Details if Yes',
+                        labelText: 'Details of the medical supplies you have',
                         prefixIcon: Icon(Icons.local_hospital),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(40)),

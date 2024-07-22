@@ -143,6 +143,7 @@ class _VolunteerPostsPageState extends State<VolunteerPostsPage> {
                         priorityLevel: post['prioritylevel'],
                         content: post['additionalnotes'],
                         quantity: post['quantity'],
+                        doctorneed: post['doctorNeed'],
                         medicineName: post['medicinename'],
                         role: post['role'],
                         id: post['uid'],
@@ -228,6 +229,36 @@ class _VolunteerPostsPageState extends State<VolunteerPostsPage> {
                       role: post['role'],
                       id: post['uid'],
                       // imageUrl: ,
+                    ),
+                  );
+                } else if (post['item'] == 'medical'){
+                  print(post);
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Content(
+                      name: post['name'],
+                      location: post['area'],
+                      medicalsupplies : post['medicalSupplies'],
+                      content: post['postcontent'],
+                      mobilenumber: post['phonenumber'],
+                      item: post['item'],
+                      role: post['role'],
+                      id: post['uid'],
+                      // imageUrl: ,
+                    ),
+                  );
+                } else if (post['item'] == 'awareness'){
+                  print(post);
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Content(
+                      name: post['name'],
+                      location: post['area'],
+                      content: post['postcontent'],
+                      item: post['item'],
+                      role: post['role'],
+                      id: post['uid'],
+                      imageUrl: post['mediaUrl'],
                     ),
                   );
                 }
